@@ -1,0 +1,14 @@
+torch
+torchvision
+transformers
+diffusers
+einops
+numpy
+scipy
+pillow
+psutil
+threadpoolctl
+zarr
+opencv-python
+open-clip-torch
+clip
