@@ -4,6 +4,37 @@ Evaluation-only release for MV-Actor on bimanual RLBench / PerAct2 tasks.
 
 This repository contains code for policy evaluation only. It does not include training code, datasets, simulator binaries, or model checkpoints.
 
+## Reproduction Assets
+
+This release is meant to be evaluated with local files. Download or prepare these assets first, then point the environment variables below to the local copies.
+
+| Asset | What it is | Official source |
+| --- | --- | --- |
+| MV-Actor checkpoint | Our released evaluation checkpoint, e.g. `best_iter200000_snapshot.pth` | Provided by the MV-Actor authors as a release asset or external download link. |
+| 3DFA code reference | Original 3D FlowMatch Actor implementation | https://github.com/nickgkan/3d_flowmatch_actor |
+| 3DFA paper | Original 3DFA paper | https://arxiv.org/abs/2508.11002 |
+| 3DFA model/data hub | Official 3DFA Hugging Face repository | https://huggingface.co/katefgroup/3d_flowmatch_actor |
+| Official 3DFA PerAct2 checkpoint | Original 3DFA PerAct2 checkpoint for baseline comparison | https://huggingface.co/katefgroup/3d_flowmatch_actor/resolve/main/3dfa_peract2.pth |
+| PerAct2 train zarr | Official pre-packaged PerAct2 zarr data used by 3DFA | https://huggingface.co/katefgroup/3d_flowmatch_actor/resolve/main/peract2.zip |
+| PerAct2 test seeds | Official PerAct2 test random-state data used for online RLBench evaluation | https://huggingface.co/katefgroup/3d_flowmatch_actor/resolve/main/peract2_test.zip |
+| PerAct2 data script | Official script that downloads `peract2.zip` and `peract2_test.zip` | https://github.com/nickgkan/3d_flowmatch_actor/blob/master/scripts/rlbench/peract2_datagen_fast.sh |
+| PerAct2 evaluation script | Official 3DFA PerAct2 evaluation script for argument reference | https://github.com/nickgkan/3d_flowmatch_actor/blob/master/online_evaluation_rlbench/eval_peract2.sh |
+| PerAct2 PyRep | RLBench simulator binding fork used by PerAct2 | https://github.com/markusgrotz/PyRep |
+| PerAct2 RLBench | RLBench fork used by PerAct2 | https://github.com/markusgrotz/RLBench |
+| CoppeliaSim | Simulator binary used by PyRep/RLBench | https://downloads.coppeliarobotics.com/V4_1_0/CoppeliaSim_Edu_V4_1_0_Ubuntu20_04.tar.xz |
+| CLIP text weights | Local Transformers-format `openai/clip-vit-base-patch32` snapshot | Use a local snapshot directory containing `config.json`; this code does not auto-download it. |
+
+The official 3DFA data script downloads the PerAct2 data into the original layout:
+
+```text
+zarr_datasets/peract2/peract2/
+peract2_raw/peract2_test/
+```
+
+For this repository, `DATA_DIR` should point to the local `peract2_raw/peract2_test` directory.
+
+See `REPRODUCIBILITY.md` for the shortest end-to-end checklist.
+
 ## What is included
 
 - `online_evaluation_rlbench/evaluate_policy.py`: online RLBench evaluation entry point.
