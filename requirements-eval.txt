@@ -1,0 +1,17 @@
+torch
+torchvision
+transformers
+huggingface_hub
+diffusers
+einops
+numpy
+scipy
+pillow
+psutil
+safetensors
+threadpoolctl
+tqdm
+zarr
+opencv-python
+open3d
+git+https://github.com/openai/CLIP.git
